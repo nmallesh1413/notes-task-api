@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/package.json">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/package.json" />
+              <option name="originalContent" value="{&#10;  &quot;name&quot;: &quot;notes-task-api&quot;,&#10;  &quot;version&quot;: &quot;1.0.0&quot;,&#10;  &quot;description&quot;: &quot;Notes and task management REST API built with Node.js, Express, MongoDB and Mongoose&quot;,&#10;  &quot;main&quot;: &quot;server.js&quot;,&#10;  &quot;scripts&quot;: {&#10;    &quot;start&quot;: &quot;node server.js&quot;,&#10;    &quot;dev&quot;: &quot;nodemon server.js&quot;,&#10;    &quot;test&quot;: &quot;jest --runInBand&quot;,&#10;    &quot;test:watch&quot;: &quot;jest --watch&quot;&#10;  },&#10;  &quot;engines&quot;: { &quot;node&quot;: &quot;&gt;=18&quot; },&#10;  &quot;dependencies&quot;: {&#10;    &quot;bcryptjs&quot;: &quot;^2.4.3&quot;,&#10;    &quot;cors&quot;: &quot;^2.8.5&quot;,&#10;    &quot;dotenv&quot;: &quot;^16.4.7&quot;,&#10;    &quot;express&quot;: &quot;^4.21.2&quot;,&#10;    &quot;express-rate-limit&quot;: &quot;^7.5.0&quot;,&#10;    &quot;express-validator&quot;: &quot;^7.2.1&quot;,&#10;    &quot;helmet&quot;: &quot;^8.0.0&quot;,&#10;    &quot;jsonwebtoken&quot;: &quot;^9.0.2&quot;,&#10;    &quot;mongoose&quot;: &quot;^8.9.5&quot;,&#10;    &quot;morgan&quot;: &quot;^1.10.0&quot;,&#10;    &quot;swagger-ui-express&quot;: &quot;^5.0.1&quot;&#10;  },&#10;  &quot;devDependencies&quot;: {&#10;    &quot;jest&quot;: &quot;^29.7.0&quot;,&#10;    &quot;mongodb-memory-server&quot;: &quot;^10.1.4&quot;,&#10;    &quot;nodemon&quot;: &quot;^3.1.9&quot;,&#10;    &quot;supertest&quot;: &quot;^7.0.0&quot;&#10;  }&#10;}" />
+              <option name="updatedContent" value="{&#10;  &quot;name&quot;: &quot;notes-task-api&quot;,&#10;  &quot;version&quot;: &quot;1.0.0&quot;,&#10;  &quot;description&quot;: &quot;Notes and task management REST API built with Node.js, Express, MongoDB and Mongoose&quot;,&#10;  &quot;main&quot;: &quot;server.js&quot;,&#10;  &quot;scripts&quot;: {&#10;    &quot;start&quot;: &quot;node server.js&quot;,&#10;    &quot;dev&quot;: &quot;nodemon server.js&quot;,&#10;    &quot;dev:memory&quot;: &quot;node scripts/start-memory-db.js&quot;,&#10;    &quot;start:memory&quot;: &quot;node scripts/start-memory-db.js&quot;,&#10;    &quot;test&quot;: &quot;jest --runInBand&quot;,&#10;    &quot;test:watch&quot;: &quot;jest --watch&quot;&#10;  },&#10;  &quot;engines&quot;: { &quot;node&quot;: &quot;&gt;=18&quot; },&#10;  &quot;dependencies&quot;: {&#10;    &quot;bcryptjs&quot;: &quot;^2.4.3&quot;,&#10;    &quot;cors&quot;: &quot;^2.8.5&quot;,&#10;    &quot;dotenv&quot;: &quot;^16.4.7&quot;,&#10;    &quot;express&quot;: &quot;^4.21.2&quot;,&#10;    &quot;express-rate-limit&quot;: &quot;^7.5.0&quot;,&#10;    &quot;express-validator&quot;: &quot;^7.2.1&quot;,&#10;    &quot;helmet&quot;: &quot;^8.0.0&quot;,&#10;    &quot;jsonwebtoken&quot;: &quot;^9.0.2&quot;,&#10;    &quot;mongoose&quot;: &quot;^8.9.5&quot;,&#10;    &quot;morgan&quot;: &quot;^1.10.0&quot;,&#10;    &quot;swagger-ui-express&quot;: &quot;^5.0.1&quot;&#10;  },&#10;  &quot;devDependencies&quot;: {&#10;    &quot;jest&quot;: &quot;^29.7.0&quot;,&#10;    &quot;mongodb-memory-server&quot;: &quot;^10.1.4&quot;,&#10;    &quot;nodemon&quot;: &quot;^3.1.9&quot;,&#10;    &quot;supertest&quot;: &quot;^7.0.0&quot;&#10;  }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/scripts/start-memory-db.js">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/scripts/start-memory-db.js" />
+              <option name="newFile" value="true" />
+              <option name="updatedContent" value="const { MongoMemoryServer } = require(&quot;mongodb-memory-server&quot;);&#10;const { spawn } = require(&quot;child_process&quot;);&#10;&#10;(async () =&gt; {&#10;  try {&#10;    const mongo = await MongoMemoryServer.create();&#10;    const uri = mongo.getUri();&#10;&#10;    console.log(`MongoMemoryServer started: ${uri}`);&#10;&#10;    const child = spawn(&quot;node&quot;, [&quot;server.js&quot;], {&#10;      shell: true,&#10;      stdio: &quot;inherit&quot;,&#10;      env: {&#10;        ...process.env,&#10;        MONGO_URI: uri,&#10;        PORT: process.env.PORT || &quot;5000&quot;,&#10;      },&#10;    });&#10;&#10;    child.on(&quot;exit&quot;, (code) =&gt; {&#10;      console.log(`Server exited with code ${code ?? 0}`);&#10;      process.exit(code ?? 0);&#10;    });&#10;&#10;    child.on(&quot;error&quot;, (error) =&gt; {&#10;      console.error(&quot;Failed to start server:&quot;, error);&#10;      process.exit(1);&#10;    });&#10;  } catch (error) {&#10;    console.error(&quot;Failed to start in-memory MongoDB:&quot;, error);&#10;    process.exit(1);&#10;  }&#10;})();&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
